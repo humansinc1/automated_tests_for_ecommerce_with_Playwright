@@ -1,0 +1,7 @@
+page_title = 'h3'
+empty_cart_text = '.alert'
+product_title = 'h6'
+product_price = '[data-oe-expression="product_price"]'
+product_qty = 'input.quantity'
+checkout_button = '[name="website_sale_main_button"]'
+checkout_title = 'h3'

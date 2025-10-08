@@ -1,0 +1,5 @@
+product_card = '.oe_product_cart'
+cart_icon = 'a[aria-label="Shopping cart"]'
+modal_title = 'h4.modal-title'
+continue_shopping_button = '.modal-footer > .btn-secondary'
+modal_close_button = '.modal-header button'
