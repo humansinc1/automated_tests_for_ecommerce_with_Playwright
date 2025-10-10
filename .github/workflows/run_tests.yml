@@ -26,7 +26,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: install Playwright dependencies and browsers
-        run: sudo playwright install-deps && playwright install
+        run: playwright install && playwright install-deps
       - name: Run all tests
         if: "github.event.inputs.deployment_target == 'all'"
         run: pytest --alluredir=allure-results
