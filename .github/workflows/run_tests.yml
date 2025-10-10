@@ -63,7 +63,7 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v5
         with:
-          path: .
+          path: ./_site
       - name: Upload artifacts to Pages
         uses: actions/upload-pages-artifact@v4
         with:
