@@ -1,3 +1,7 @@
+import pytest
+
+
+@pytest.mark.smoke
 def test_add_product_to_cart(product_details_page):
     product_details_page.open_page()
     product_details_page.add_product_to_cart()
