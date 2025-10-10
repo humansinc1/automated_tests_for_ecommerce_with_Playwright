@@ -62,8 +62,12 @@ jobs:
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v5
+        with:
+          path: .
       - name: Upload artifacts to Pages
         uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site/
       - name: Deploy to Pages
         id: deployment
         uses: actions/deploy-pages@v4
