@@ -6,7 +6,7 @@ on:
       deployment_target:
         description: Choose test suite
         required: true
-        type: choose
+        type: choice
         default: smoke
         options:
           - smoke
@@ -27,11 +27,11 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run all tests
         if: "github.event.inputs.deployment_target == 'all'"
-        run: pytest -alluredir=allure-results
+        run: pytest --alluredir=allure-results
         continue-on-error: true
       - name: Run smoke tests
         if: "github.event.inputs.deployment_target == 'smoke'"
-        run: pytest -m smoke -alluredir=allure-results
+        run: pytest -m smoke --alluredir=allure-results
         continue-on-error: true
       - name: Install Java
         uses: actions/setup-java@v5
@@ -39,7 +39,7 @@ jobs:
           distribution: 'microsoft'
           java-version: '17'
       - name: Install Allure
-        run: sudo wget https://github.com/allure-framework/allure2/releases/download/2.35.1/allure-2.35.1.tgz && sudo tar xf /home/user/Downloads/allure-2.35.1.tgz -C /opt/ && sudo ln -s /opt/allure-2.35.1/bin/allure /usr/bin/allure
+        run: sudo wget https://github.com/allure-framework/allure2/releases/download/2.35.1/allure-2.35.1.tgz && sudo tar xf allure-2.35.1.tgz -C /opt/ && sudo ln -s /opt/allure-2.35.1/bin/allure /usr/bin/allure
       - name: Generate report
         run: allure generate -c allure-results -o allure-report
       - name: Save report
