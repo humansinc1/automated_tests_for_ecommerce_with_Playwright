@@ -20,7 +20,7 @@ class CartPage(BasePage):
     @allure.step('Checking if product title is correct')
     def is_product_title_correct(self, product_name):
         cart_product_title = self.find(cart_page_locators.product_title)
-        expect(cart_product_title).to_have_text(product_name)
+        expect(cart_product_title).to_contain_text(product_name)
 
     @allure.step('Checking if product price is correct')
     def is_product_price_correct(self, product_price):

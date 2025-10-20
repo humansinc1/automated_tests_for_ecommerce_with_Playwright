@@ -9,10 +9,12 @@ class BasePage:
 
     def __init__(self, page: Page):
         self.page = page
+
     @allure.step('Opening page')
-    def open_page(self):
+    def open_page(self, page_url=None):
+        page_url = page_url if page_url else self.page_url
         if self.page_url:
-            self.page.goto(f'{self.base_url}{self.page_url}')
+            self.page.goto(f'{self.base_url}{page_url}')
         else:
             raise NotImplementedError('Page cannot be opened')
 
