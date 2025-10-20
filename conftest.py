@@ -1,4 +1,5 @@
 import pytest
+import allure
 
 from playwright.sync_api import Browser
 from pages.cart_page import CartPage
@@ -15,6 +16,11 @@ def page(browser: Browser):
     page = context.new_page()
     page.set_viewport_size({'width': 1920, 'height': 1080})
     yield page
+    allure.attach(
+        page.screenshot(),
+        name=f'screenshot_{page.title()}',
+        attachment_type=allure.attachment_type.PNG,
+    )
     context.close()
 
 
@@ -49,3 +55,11 @@ def add_to_cart_plp(product_listing_page):
 @pytest.fixture(params=urls.pdp_url_list)
 def pdp_url_list(request):
     return request.param
+
+# @pytest.fixture()
+# def screenshot(page):
+#     yield allure.attach(
+#         page.screenshot(),
+#         name=f'screenshot_{page.title()}',
+#         attachment_type=allure.attachment_type.PNG,
+#     )
