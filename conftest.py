@@ -4,6 +4,7 @@ from playwright.sync_api import Browser
 from pages.cart_page import CartPage
 from pages.product_details_page import ProductDetailsPage
 from pages.product_listing_page import ProductListingPage
+from pages import urls
 
 
 @pytest.fixture()
@@ -33,8 +34,8 @@ def product_listing_page(page):
 
 
 @pytest.fixture()
-def add_to_cart_pdp(product_details_page):
-    product_details_page.open_page()
+def add_to_cart_pdp(product_details_page, pdp_url_list):
+    product_details_page.open_page(page_url=pdp_url_list)
     product_details_page.add_product_to_cart()
     return product_details_page
 
@@ -44,3 +45,7 @@ def add_to_cart_plp(product_listing_page):
     product_listing_page.open_page()
     product_listing_page.add_product_to_the_cart_from_plp()
     return product_listing_page
+
+@pytest.fixture(params=urls.pdp_url_list)
+def pdp_url_list(request):
+    return request.param

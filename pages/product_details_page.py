@@ -1,11 +1,12 @@
 from pages.base_page import BasePage
 from pages.locators import product_details_page_locators, header_locators
+from pages import urls
 from playwright.sync_api import expect
 import allure
 
 
 class ProductDetailsPage(BasePage):
-    page_url = '/furn-9999-office-design-software-7?category=9'
+    page_url = urls.product_pdp_link2
     product_name = None
     product_price = None
     product_qty = None
