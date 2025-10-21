@@ -56,10 +56,3 @@ def add_to_cart_plp(product_listing_page):
 def pdp_url_list(request):
     return request.param
 
-# @pytest.fixture()
-# def screenshot(page):
-#     yield allure.attach(
-#         page.screenshot(),
-#         name=f'screenshot_{page.title()}',
-#         attachment_type=allure.attachment_type.PNG,
-#     )
